@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Lake{
   private int [][] pasture;
-  private int [][] stoompInstructions;
+  private int [][] stompInstructions;
   private int lakeElevation;
 
   public Lake(String fileName){
@@ -12,7 +12,18 @@ public class Lake{
       Scanner sys = new Scanner(file);
       //Hope, I'm alloed to use delimeters
       sys.useDelimiter("\\s*");
-      String line1 = sys.nextLine();
+      int i = 1;
+      int row =0;
+      int col =0;
+      while(sys.hasNext()){
+        int num = sys.nextInt();
+        if(i==1)row=num;
+        if(i==2)col=num;
+        if(i==3)lakeElevation=num;
+        if(i==4)stompInstructions = new int [num];
+        if(i>=5 && i<=)
+
+      }
 
     }
     catch(FileNotFoundException e){
