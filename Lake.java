@@ -22,6 +22,11 @@ public class Lake{
         if(i==3)lakeElevation=num;
         if(i==4)stompInstructions = new int [num];
         if(i>=5 && i<=row*col+4){
+          int actualColumn = (i--5) % col;
+          int actualRow = (i-5) / col;
+          pasture[actualRow][actualColumn]=num;
+        }
+        if(i>row*col+4){
           
         }
 
