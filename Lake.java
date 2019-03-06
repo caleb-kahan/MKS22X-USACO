@@ -21,7 +21,9 @@ public class Lake{
         if(i==2)col=num;
         if(i==3)lakeElevation=num;
         if(i==4)stompInstructions = new int [num];
-        if(i>=5 && i<=)
+        if(i>=5 && i<=row*col+4){
+          
+        }
 
       }
 
