@@ -33,7 +33,6 @@ public class Lake{
 	  	stompInstructions[i-(row*col+5)][j]=num;
 		num = sys.nextInt();
 	  }
-          
         }
 	i++;
       }
@@ -43,5 +42,11 @@ public class Lake{
       System.out.println("Invalid filename: "+fileName);
     }
   }
+  public void stomp(){
+	for(int i=0;i<stompInstructions.length;i++){
+		int [] stomper = stompInstructions[i];
+		int row = stomper[0]-1;
+		int col = stomper[1]-1;
+		
 
 }
