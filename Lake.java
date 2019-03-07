@@ -15,7 +15,7 @@ public class Lake{
       int i = 1;
       int row =0;
       int col =0;
-      while(sys.hasNext()){
+      while(sys.hasNextInt()){
         int num = sys.nextInt();
         if(i==1)row=num;
         if(i==2)col=num;
@@ -27,9 +27,13 @@ public class Lake{
           pasture[actualRow][actualColumn]=num;
         }
         if(i>row*col+4){
+	  for(int j=0;j<3;j++){
+	  	stompInstructions[i-(row*col+5)][j]=num;
+		num = sys.nextInt();
+	  }
           
         }
-
+	i++;
       }
 
     }
