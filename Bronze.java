@@ -6,6 +6,8 @@ public class Bronze{
     int [][] pasture=new int[0][0];
     int [][] stompInstructions=new int[0][0];
     int lakeElevation=initialize(pasture,stompInstructions,fileName);
+    stomp(stompInstructions, pasture);
+
 
     }
     public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName){
@@ -42,7 +44,7 @@ public class Bronze{
   	      i++;
       }
    }
-   public void stomp(int [][] stompInstructions, int [][] pasture, int lakeElevation){
+   public static void stomp(int [][] stompInstructions, int [][] pasture){
      for(int i=0;i<stompInstructions.length;i++){
        int [] stomper = stompInstructions[i];
        int row = stomper[0]-1;
