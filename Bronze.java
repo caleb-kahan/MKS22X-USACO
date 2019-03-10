@@ -64,7 +64,8 @@ public class Bronze{
        }
      }
    }
-   public static void makeALake(int [][] pasture, int lakeElevation){
+   public static int makeALakeAndCalculateVolume(int [][] pasture, int lakeElevation){
+     int combine =0;
      for(int i=0;i<pasture.length;i++){
        for(int j=0;j<pasture[0].length;j++){
          if(pasture[i][j]>=lakeElevation){
@@ -72,8 +73,10 @@ public class Bronze{
          }
          else{
            pasture[i][j]=lakeElevation-pasture[i][j];
+           combine+=pasture[i][j];
          }
       }
     }
+    return 72*72*combine;
   }
 }
