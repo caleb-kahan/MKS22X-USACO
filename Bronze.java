@@ -42,11 +42,24 @@ public class Bronze{
   	      i++;
       }
    }
-   public void stomp(){
+   public void stomp(int [][] stompInstructions, int [][] pasture, int lakeElevation){
      for(int i=0;i<stompInstructions.length;i++){
        int [] stomper = stompInstructions[i];
        int row = stomper[0]-1;
        int col = stomper[1]-1;
+       int distance = stomper[2];
+       int highest = 0;
+       for(int j=0;j<3;j++){
+         for(int k=0;k<3;k++){
+           if(highest<pasture[row+j][col+k]) highest=pasture[row+j][col+k];
+         }
+       }
+       int max = highest - distance;
+       for(int j=0;j<3;j++){
+         for(int k=0;k<3;k++){
+           if(max<pasture[row+j][col+k]) pasture[row+j][col+k]=max;
+         }
+       }
      }
    }
 }
