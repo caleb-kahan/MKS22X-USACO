@@ -64,4 +64,16 @@ public class Bronze{
        }
      }
    }
+   public static void makeALake(int [][] pasture, int lakeElevation){
+     for(int i=0;i<pasture.length;i++){
+       for(int j=0;j<pasture[0].length;j++){
+         if(pasture[i][j]>=lakeElevation){
+           pasture[i][j]=0;
+         }
+         else{
+           pasture[i][j]=lakeElevation-pasture[i][j];
+         }
+      }
+    }
+  }
 }
