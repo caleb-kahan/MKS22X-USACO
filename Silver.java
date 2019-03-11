@@ -4,11 +4,9 @@ import java.util.*;
 public class Silver{
   public static int silver(String fileName){
     int [][] optimize = new int [0][0];
-    Integer time=0;
-    Integer row1=0;
-    Integer col1=0;
-    Integer row2=0;
-    Integer col2=0;
+    int [] rowsColsTime = new int[3];
+    int [] startEnd = new int[4];
+
     try{
       initialize(optimize,time,row1,col1,row2,col2,fileName);
     }catch(FileNotFoundException e){
@@ -20,6 +18,9 @@ public class Silver{
     }
     //System.out.println(optimize.length);
     return optimize[row2][col2];
+  }
+  public static int [] generateRowsColsTime(String filename, Scanner sys){
+    
   }
   public static void initialize(int[][] optimize, Integer time, Integer row1, Integer col1, Integer row2, Integer col2,String fileName)throws FileNotFoundException{
     File file = new File(fileName);
