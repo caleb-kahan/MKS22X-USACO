@@ -21,17 +21,22 @@ public class Silver{
     if(! immediateCheck(startEnd[0],startEnd[1],startEnd[2],startEnd[3],rowsColsTime[2])) return 0;
     optimize[startEnd[0]][startEnd[1]]=1;
     for(int i=1;i<=rowsColsTime[2];i++){
+      printer(optimize);
+      System.out.println();
       canMove = generateCanMove(i,startEnd[0], startEnd[1],canMove);
       optimize=generate(optimize,canMove);
     }
-    for(int i=0;i<optimize.length;i++){
-	for(int j=0;j<optimize.length;j++){
-		System.out.print(optimize[i][j]+" ");
-	}
-	System.out.println();
-    }
+    
     return optimize[startEnd[2]][startEnd[3]];
   }
+  public static void printer(int [][] optimize){
+	for(int i=0;i<optimize.length;i++){
+		for(int j=0;j<optimize[0].length;j++){
+			System.out.print(optimize[i][j]+" ");
+		}
+		System.out.println();
+	}
+    }
   public static int [] generateRowsColsTime(Scanner sys){
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
@@ -81,20 +86,25 @@ public class Silver{
 	
   public static boolean immediateCheck(int r1, int c1, int r2, int c2, int time){
     boolean oddTime = time%2==1;
-    boolean oddDistance = (Math.abs(r2-r1)+Math.abs(c2-r2))%2==1;
+    boolean oddDistance = (Math.abs(r2-r1)+Math.abs(c2-c1))%2==1;
     return oddTime == oddDistance;
   }
   public static int [][] generate(int[][]optimize, boolean[][]canMove){
     for(int i=0;i<optimize.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        if(canMove[i][j]){
+        if(canMove[i][j]&&optimize[i][j]>-1){
 		optimize[i][j]+=checker(optimize,i-1,j);
 		optimize[i][j]+=checker(optimize,i,j-1);
 		optimize[i][j]+=checker(optimize,i+1,j);
 		optimize[i][j]+=checker(optimize,i,j+1);
-	}
-	else
+	}	
+      }
+    }
+    for(int i=0;i<optimize.length;i++){
+      for(int j=0;j<optimize[0].length;j++){
+        if(! canMove[i][j]){
 		optimize[i][j]=0;
+	}	
       }
     }
     return optimize;
