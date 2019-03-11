@@ -44,11 +44,14 @@ public class Silver{
   public static void generate(int[][]optimize){
     for(int i=0;i<optimze.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        optimzie[i][j]
+        optimzie[i][j]+=checker(optimize,i,j);
       }
     }
   }
-  public static boolean checker(int [][] optimize, int i, int j){
-    return (optimize[i][j]>=1 && i>=0 && j>=0 && i < optimize.length && j < optimize[0].length);
+  public static int checker(int [][] optimize, int i, int j){
+    int result = optimize[i][j];
+    if (result>=1 && i>=0 && j>=0 && i < optimize.length && j < optimize[0].length)
+        return result;
+    return 0;
   }
 }
