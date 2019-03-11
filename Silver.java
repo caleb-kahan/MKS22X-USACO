@@ -21,8 +21,8 @@ public class Silver{
     if(! immediateCheck(startEnd[0],startEnd[1],startEnd[2],startEnd[3],rowsColsTime[2])) return 0;
     optimize[startEnd[0]][startEnd[1]]=1;
     for(int i=1;i<=rowsColsTime[2];i++){
-      printer(optimize);
-      System.out.println();
+      //printer(optimize);
+      //System.out.println();
       canMove = generateCanMove(i,startEnd[0], startEnd[1],canMove);
       optimize=generate(optimize,canMove);
     }
@@ -53,8 +53,9 @@ public class Silver{
 	int [][] optimize = new int[rows][cols];
 	for(int i=0;i<rows;i++){
       		for(int j=0;j<cols;j++){
-        		if(sys.next().equals("*")){
-				System.out.println("This should run at least once");
+			String str = sys.next();
+			System.out.println(str);
+        		if(str.equals("*")){
           			optimize[i][j]=-1;
 			}
 		}
@@ -74,7 +75,9 @@ public class Silver{
 					
   public static int [] generateStartEnd(Scanner sys){
 	int row1=sys.nextInt()-1;
+	System.out.println(row1);
     	int col1=sys.nextInt()-1;
+	System.out.println(col1);
     	int row2=sys.nextInt()-1;
     	int col2=sys.nextInt()-1;
 	int [] returner = new int[4];
