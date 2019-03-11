@@ -18,7 +18,7 @@ public class Bronze{
       int lakeElevation=0;
       File file = new File(fileName);
       //Hope, I'm alloed to use delimeters
-      Scanner sys = new Scanner(fileName);
+      Scanner sys = new Scanner(file);
       sys.useDelimiter("\\s*");
         int i = 1;
         int row =0;

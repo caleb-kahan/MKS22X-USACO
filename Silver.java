@@ -25,21 +25,6 @@ public class Silver{
     Scanner sys = new Scanner(file);
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-    System.out.println(sys.next());
-
     int row = sys.nextInt();
     int col = sys.nextInt();
     optimize = new int[row][col];
