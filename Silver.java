@@ -18,7 +18,7 @@ public class Silver{
     for(int i=0;i<time;i++){
       generate(optimize);
     }
-    System.out.println(optimize.length);
+    //System.out.println(optimize.length);
     return optimize[row2][col2];
   }
   public static void initialize(int[][] optimize, Integer time, Integer row1, Integer col1, Integer row2, Integer col2,String fileName)throws FileNotFoundException{
