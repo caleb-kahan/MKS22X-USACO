@@ -9,11 +9,11 @@ public class Silver{
     Integer col1=0;
     Integer row2=0;
     Integer col2=0;
-    //try{
+    try{
       initialize(optimize,time,row1,col1,row2,col2,fileName);
-    /*}catch(FileNotFoundException e){
+    }catch(FileNotFoundException e){
       System.out.println("Invalid filename: "+fileName);
-    }*/
+    }
     if(! immediateCheck(row1,col1,row2,col2,time)) return 0;
     for(int i=0;i<time;i++){
       generate(optimize);
