@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Silver{
   public static int silver(String fileName){
@@ -17,7 +18,7 @@ public class Silver{
     rowsColsTime = generateRowsColsTime(sys);
     optimize = generateOptimize(rowsColsTime[0],rowsColsTime[1],sys);
     canMove = new boolean[rowsColsTime[0]][rowsColsTime[1]];
-    startEnd = generateStartEnd(sys);
+    /*startEnd = generateStartEnd(sys);
     if(! immediateCheck(startEnd[0],startEnd[1],startEnd[2],startEnd[3],rowsColsTime[2])) return 0;
     optimize[startEnd[0]][startEnd[1]]=1;
     for(int i=1;i<=rowsColsTime[2];i++){
@@ -26,8 +27,9 @@ public class Silver{
       canMove = generateCanMove(i,startEnd[0], startEnd[1],canMove);
       optimize=generate(optimize,canMove);
     }
-    
-    return optimize[startEnd[2]][startEnd[3]];
+    sys.close();
+    return optimize[startEnd[2]][startEnd[3]];*/
+    return 0;
   }
   public static void printer(int [][] optimize){
 	for(int i=0;i<optimize.length;i++){
@@ -40,9 +42,10 @@ public class Silver{
   public static int [] generateRowsColsTime(Scanner sys){
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
-    int row = sys.nextInt();
-    int col = sys.nextInt();
-    int time = sys.nextInt();
+    int row = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
+    System.out.println(row);
+    int col = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
+    int time = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
     int [] returner = new int[3];
     returner[0]=row;
     returner[1]=col; 
@@ -54,7 +57,6 @@ public class Silver{
 	for(int i=0;i<rows;i++){
       		for(int j=0;j<cols;j++){
 			String str = sys.next();
-			System.out.println(str);
         		if(str.equals("*")){
           			optimize[i][j]=-1;
 			}
@@ -74,12 +76,12 @@ public class Silver{
   }
 					
   public static int [] generateStartEnd(Scanner sys){
-	int row1=sys.nextInt()-1;
+	int row1=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
 	System.out.println(row1);
-    	int col1=sys.nextInt()-1;
+    	int col1=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
 	System.out.println(col1);
-    	int row2=sys.nextInt()-1;
-    	int col2=sys.nextInt()-1;
+    	int row2=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
+    	int col2=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
 	int [] returner = new int[4];
 	returner[0]=row1;
 	returner[1]=col1;
