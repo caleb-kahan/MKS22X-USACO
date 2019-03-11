@@ -2,13 +2,12 @@ import java.io.*;
 import java.util.*;
 
 public class Bronze{
-  public static void bronze(){
+  public static int bronze(String fileName){
     int [][] pasture=new int[0][0];
     int [][] stompInstructions=new int[0][0];
     int lakeElevation=initialize(pasture,stompInstructions,fileName);
     stomp(stompInstructions, pasture);
-
-
+    return makeALakeAndCalculateVolume(pasture,lakeElevation);
     }
     public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName){
       try{
