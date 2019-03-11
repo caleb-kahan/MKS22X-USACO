@@ -5,19 +5,19 @@ public class Bronze{
   public static int bronze(String fileName){
     int [][] pasture=new int[0][0];
     int [][] stompInstructions=new int[0][0];
-    int lakeElevation=initialize(pasture,stompInstructions,fileName);
+    try{
+      int lakeElevation=initialize(pasture,stompInstructions,fileName);
+    }catch(FileNotFoundException e){
+        System.out.println("Invalid filename: "+fileName);
+    }
     stomp(stompInstructions, pasture);
     return makeALakeAndCalculateVolume(pasture,lakeElevation);
     }
-    public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName){
+    public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName) throws FileNoutFoundExeception{
       int lakeElevation=0;
-      try{
-        File file = new File(fileName);
-        Scanner sys = new Scanner(fileName);
-      }catch(FileNotFoundException e){
-        System.out.println("Invalid filename: "+fileName);
-      }
+      File file = new File(fileName);
       //Hope, I'm alloed to use delimeters
+      Scanner sys = new Scanner(fileName);
       sys.useDelimiter("\\s*");
         int i = 1;
         int row =0;
@@ -43,6 +43,7 @@ public class Bronze{
           }
   	      i++;
       }
+      return lakeElevation;
 
    }
    public static void stomp(int [][] stompInstructions, int [][] pasture){
