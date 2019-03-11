@@ -8,8 +8,10 @@ public class Silver{
     Integer col2=0;
     initialize(optimize,time,row1,col1,row2,col2,fileName);
     if(! immediateCheck) return 0;
-
-
+    for(int i=0;i<time;i++){
+      generate(optimize);
+    }
+    return optimize[row2][col2];
   }
   public static int initialize(int[][] optimize, Integer time, Integer row1, Integer col1, Integer row2, Integer col2,String fileName){
     try{
