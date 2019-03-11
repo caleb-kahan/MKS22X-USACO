@@ -102,7 +102,7 @@ public class Silver{
     }
     for(int i=0;i<optimize.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        if(! canMove[i][j]){
+        if(! canMove[i][j] && optimize[i][j]>-1){
 		optimize[i][j]=0;
 	}	
       }
