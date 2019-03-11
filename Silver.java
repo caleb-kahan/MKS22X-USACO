@@ -4,6 +4,7 @@ import java.util.*;
 public class Silver{
   public static int silver(String fileName){
     int [][] optimize;
+    int [][] canMove;
     int [] rowsColsTime;
     int [] startEnd;
     Scanner sys=new Scanner("");
@@ -15,11 +16,19 @@ public class Silver{
     }
     rowsColsTime = generateRowsColsTime(sys);
     optimize = generateOptimize(rowsColsTime[0],rowsColsTime[1],sys);
+    canMove = new int[rowsColsTime[0]][rowsColsTime[1]];
     startEnd = generateStartEnd(sys);
     if(! immediateCheck(startEnd[0],startEnd[1],startEnd[2],startEnd[3],rowsColsTime[2])) return 0;
     optimize[startEnd[0]][startEnd[1]]=1;
-    for(int i=0;i<rowsColsTime[2];i++){
+    for(int i=1;i<=rowsColsTime[2];i++){
+      canMove = generateCanMove(i,startEnd[0], startEnd[1],canMove);
       optimize=generate(optimize);
+    }
+    for(int i=0;i<optimize.length;i++){
+	for(int j=0;j<optimize.length;j++){
+		System.out.print(optimize[i][j]+" ");
+	}
+	System.out.println();
     }
     return optimize[startEnd[2]][startEnd[3]];
   }
@@ -46,6 +55,17 @@ public class Silver{
 	}
 	return optimize;
   }
+  public static int [][] generateCanMove(int time, int row, int col, int [][]canMove){
+	for(int i=0;i<canMove.length;i++){
+		for(int j=0;j<canMove[0].length;j++){
+			if(! immediateCheck(row,col,i,j,time)
+				canMove[i][j]=false;
+			else canMove[i][j]=true;
+		}
+	}
+  }
+			
+		
   public static int [] generateStartEnd(Scanner sys){
 	int row1=sys.nextInt()-1;
     	int col1=sys.nextInt()-1;
@@ -67,18 +87,19 @@ public class Silver{
   public static int [][] generate(int[][]optimize){
     for(int i=0;i<optimize.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        optimize[i][j]+=checker(optimize,i-1,j);
-	optimize[i][j]+=checker(optimize,i,j-1);
-	optimize[i][j]+=checker(optimize,i+1,j);
-	optimize[i][j]+=checker(optimize,i,j+1);
+        if(canMove[i][j])optimize[i][j]+=checker(optimize,i-1,j);
+	if(canMove[i][j])optimize[i][j]+=checker(optimize,i,j-1);
+	if(canMove[i][j])optimize[i][j]+=checker(optimize,i+1,j);
+	if(canMove[i][j])optimize[i][j]+=checker(optimize,i,j+1);
       }
     }
     return optimize;
   }
   public static int checker(int [][] optimize, int i, int j){
-    int result = optimize[i][j];
-    if (result>=1 && i>=0 && j>=0 && i < optimize.length && j < optimize[0].length)
-        return result;
+    //If the 4 conditions are right, I don't have to worry about the last condition.
+    if (i>=0 && j>=0 && i < optimize.length && j < optimize[0].length && optimize[i][j]>=1){
+        return optimize[i][j];
+    }
     return 0;
   }
 }
