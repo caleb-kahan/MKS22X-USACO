@@ -54,6 +54,7 @@ public class Silver{
 	for(int i=0;i<rows;i++){
       		for(int j=0;j<cols;j++){
         		if(sys.next()=="*"){
+				System.out.println("This should run at least once");
           			optimize[i][j]=-1;
 			}
 		}
@@ -102,7 +103,7 @@ public class Silver{
     }
     for(int i=0;i<optimize.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        if(! canMove[i][j] && optimize[i][j]>-1){
+        if(! canMove[i][j] && optimize[i][j]>0){
 		optimize[i][j]=0;
 	}	
       }
