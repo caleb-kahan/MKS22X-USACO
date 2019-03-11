@@ -42,14 +42,12 @@ public class Silver{
   public static int [] generateRowsColsTime(Scanner sys){
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
-    int row = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
-    System.out.println(row);
-    int col = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
-    int time = Integer.parseInt(sys.next(Pattern.compile("\\d*")));
+    String toBeAnalyzed = sys.nextLine();
+    String [] analyzer = toBeAnalyzed.split(" ");
     int [] returner = new int[3];
-    returner[0]=row;
-    returner[1]=col; 
-    returner[2]=time;
+    returner[0]=Integer.parseInt(analyzer[0]);
+    returner[1]=Integer.parseInt(analyzer[1]);
+    returner[2]=Integer.parseInt(analyzer[2]);
     return returner;
   }
   public static int [][] generateOptimize(int rows, int cols, Scanner sys){
@@ -76,10 +74,16 @@ public class Silver{
   }
 					
   public static int [] generateStartEnd(Scanner sys){
-	int row1=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
-	System.out.println(row1);
-    	int col1=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
-	System.out.println(col1);
+	String toBeAnalyzed = sys.nextLine();
+    	String [] analyzer = toBeAnalyzed.split(" ");
+    	int [] returner = new int[3];
+    	returner[0]=Integer.parseInt(analyzer[0]);
+    	returner[1]=Integer.parseInt(analyzer[1]);
+    	returner[2]=Integer.parseInt(analyzer[2]);
+	int row1=Integer.parseInt(sys.next(Pattern.compile("\\S*")))-1;
+	//System.out.println(row1);
+    	int col1=Integer.parseInt(sys.next(Pattern.compile("\\S*")))-1;
+	//System.out.println(col1);
     	int row2=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
     	int col2=Integer.parseInt(sys.next(Pattern.compile("\\d*")))-1;
 	int [] returner = new int[4];
