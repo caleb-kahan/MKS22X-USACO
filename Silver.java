@@ -62,7 +62,9 @@ public class Silver{
   public static boolean immediateCheck(int r1, int c1, int r2, int c2, int time){
     System.out.println("Fishy");
     boolean oddTime = time%2==1;
+    System.out.println(time);
     boolean oddDistance = (Math.abs(r2-r1)+Math.abs(c2-r2))%2==1;
+    System.out.println(Math.abs(r2-r1)+Math.abs(c2-r2))
     return oddTime == oddDistance;
   }
   public static int [][] generate(int[][]optimize){
