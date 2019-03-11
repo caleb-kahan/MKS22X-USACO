@@ -53,7 +53,7 @@ public class Silver{
 	int [][] optimize = new int[rows][cols];
 	for(int i=0;i<rows;i++){
       		for(int j=0;j<cols;j++){
-        		if(sys.next()=="*"){
+        		if(sys.next().equals("*")){
 				System.out.println("This should run at least once");
           			optimize[i][j]=-1;
 			}
