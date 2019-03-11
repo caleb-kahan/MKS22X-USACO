@@ -10,12 +10,13 @@ public class Bronze{
     return makeALakeAndCalculateVolume(pasture,lakeElevation);
     }
     public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName){
+      int lakeElevation=0;
       try{
         File file = new File(fileName);
+        Scanner sys = new Scanner(fileName);
       }catch(FileNotFoundException e){
         System.out.println("Invalid filename: "+fileName);
       }
-      Scanner sys = new Scanner(file);
       //Hope, I'm alloed to use delimeters
       sys.useDelimiter("\\s*");
         int i = 1;
@@ -42,6 +43,7 @@ public class Bronze{
           }
   	      i++;
       }
+
    }
    public static void stomp(int [][] stompInstructions, int [][] pasture){
      for(int i=0;i<stompInstructions.length;i++){

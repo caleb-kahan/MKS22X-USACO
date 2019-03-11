@@ -19,7 +19,7 @@ public class Silver{
     }catch(FileNotFoundException e){
       System.out.println("Invalid filename: "+fileName);
     }
-    Scanner sys = new Scanner(file);
+    Scanner sys = new Scanner(fileName);
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
     int row = sys.nextInt();
