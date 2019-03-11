@@ -5,15 +5,16 @@ public class Bronze{
   public static int bronze(String fileName){
     int [][] pasture=new int[0][0];
     int [][] stompInstructions=new int[0][0];
+    int lakeElevation=0;
     try{
-      int lakeElevation=initialize(pasture,stompInstructions,fileName);
+      lakeElevation=initialize(pasture,stompInstructions,fileName);
     }catch(FileNotFoundException e){
         System.out.println("Invalid filename: "+fileName);
     }
     stomp(stompInstructions, pasture);
     return makeALakeAndCalculateVolume(pasture,lakeElevation);
     }
-    public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName) throws FileNoutFoundExeception{
+    public static int initialize(int [][] pasture, int [][] stompInstructions, String fileName)throws FileNotFoundException{
       int lakeElevation=0;
       File file = new File(fileName);
       //Hope, I'm alloed to use delimeters
