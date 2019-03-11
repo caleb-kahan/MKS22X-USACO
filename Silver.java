@@ -22,7 +22,7 @@ public class Silver{
   }
   public static void initialize(int[][] optimize, Integer time, Integer row1, Integer col1, Integer row2, Integer col2,String fileName)throws FileNotFoundException{
     File file = new File(fileName);
-    Scanner sys = new Scanner(fileName);
+    Scanner sys = new Scanner(file);
     //Hope, I'm alloed to use delimeters
     sys.useDelimiter("\\s*");
     System.out.println(sys.next());
