@@ -4,7 +4,7 @@ import java.util.*;
 public class Silver{
   public static int silver(String fileName){
     int [][] optimize;
-    int [][] canMove;
+    boolean [][] canMove;
     int [] rowsColsTime;
     int [] startEnd;
     Scanner sys=new Scanner("");
@@ -16,13 +16,13 @@ public class Silver{
     }
     rowsColsTime = generateRowsColsTime(sys);
     optimize = generateOptimize(rowsColsTime[0],rowsColsTime[1],sys);
-    canMove = new int[rowsColsTime[0]][rowsColsTime[1]];
+    canMove = new boolean[rowsColsTime[0]][rowsColsTime[1]];
     startEnd = generateStartEnd(sys);
     if(! immediateCheck(startEnd[0],startEnd[1],startEnd[2],startEnd[3],rowsColsTime[2])) return 0;
     optimize[startEnd[0]][startEnd[1]]=1;
     for(int i=1;i<=rowsColsTime[2];i++){
       canMove = generateCanMove(i,startEnd[0], startEnd[1],canMove);
-      optimize=generate(optimize);
+      optimize=generate(optimize,canMove);
     }
     for(int i=0;i<optimize.length;i++){
 	for(int j=0;j<optimize.length;j++){
@@ -55,17 +55,17 @@ public class Silver{
 	}
 	return optimize;
   }
-  public static int [][] generateCanMove(int time, int row, int col, int [][]canMove){
+  public static boolean [][] generateCanMove(int time, int row, int col, boolean [][]canMove){
 	for(int i=0;i<canMove.length;i++){
 		for(int j=0;j<canMove[0].length;j++){
-			if(! immediateCheck(row,col,i,j,time)
+			if(! immediateCheck(row,col,i,j,time))
 				canMove[i][j]=false;
 			else canMove[i][j]=true;
 		}
 	}
+	return canMove;
   }
-			
-		
+					
   public static int [] generateStartEnd(Scanner sys){
 	int row1=sys.nextInt()-1;
     	int col1=sys.nextInt()-1;
@@ -84,13 +84,17 @@ public class Silver{
     boolean oddDistance = (Math.abs(r2-r1)+Math.abs(c2-r2))%2==1;
     return oddTime == oddDistance;
   }
-  public static int [][] generate(int[][]optimize){
+  public static int [][] generate(int[][]optimize, boolean[][]canMove){
     for(int i=0;i<optimize.length;i++){
       for(int j=0;j<optimize[0].length;j++){
-        if(canMove[i][j])optimize[i][j]+=checker(optimize,i-1,j);
-	if(canMove[i][j])optimize[i][j]+=checker(optimize,i,j-1);
-	if(canMove[i][j])optimize[i][j]+=checker(optimize,i+1,j);
-	if(canMove[i][j])optimize[i][j]+=checker(optimize,i,j+1);
+        if(canMove[i][j]){
+		optimize[i][j]+=checker(optimize,i-1,j);
+		optimize[i][j]+=checker(optimize,i,j-1);
+		optimize[i][j]+=checker(optimize,i+1,j);
+		optimize[i][j]+=checker(optimize,i,j+1);
+	}
+	else
+		optimize[i][j]=0;
       }
     }
     return optimize;
